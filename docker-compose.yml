@@ -1,0 +1,15 @@
+# Example deployment for ComotVid (full working setup ships inside the purchased ZIP).
+# Quickstart:
+#   unzip comotvid-downloader-v1.0.0.zip && cd comotvid-downloader
+#   cp .env.example .env
+#   docker compose up -d --build
+services:
+  comotvid:
+    build: .
+    ports:
+      - "20229:20229"
+    environment:
+      - PORT=20229
+      # Optional: mount cookies for YouTube bot checks / TikTok age-gated posts
+      # - ./.cookies:/app/.cookies:ro
+    restart: unless-stopped
